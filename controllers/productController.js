@@ -1,17 +1,14 @@
 import {v2 as cloudinary} from "cloudinary"
 import productModel from "../models/productModel.js"
 
-import {v2 as cloudinary} from "cloudinary"
-import productModel from "../models/productModel.js"
-
 // function for add product 
 
 const addProduct = async (req, res) => {
     try {
 
-        const { name, description, price, category, image1 } = req.body
+        const { name, description, price, category,} = req.body
 
-        // const image1 = req.files.image1 && req.files.image1[0]
+        const image1 = req.files.image1 && req.files.image1[0]
         const image2 = req.files.image2 && req.files.image2[0]
         const image3 = req.files.image3 && req.files.image3[0]
         const image4 = req.files.image4 && req.files.image4[0]
