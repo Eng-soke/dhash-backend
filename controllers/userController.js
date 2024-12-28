@@ -1,17 +1,14 @@
 import jwt from "jsonwebtoken"
 
-
 // admin login 
-
 const adminLogin = async (req, res)=>{
-
     try {
         
         const {name, password} = req.body
 
         if(name === process.env.ADMIN_NAME && password === process.env.ADMIN_PASSWORD){
 
-            const token = jwt.sign({name,password},process.env.JWT_SECRET)
+            const token = jwt.sign(name+password,process.env.JWT_SECRET)
             res.json({success:true,token})
         }
         else{
@@ -22,8 +19,6 @@ const adminLogin = async (req, res)=>{
         console.log(error.message);
         res.json({success: false, message: error.message})
     }
- 
-
 }
 
 export {adminLogin}
